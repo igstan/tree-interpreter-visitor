@@ -11,6 +11,6 @@ public class Fun implements Node {
 
   @Override
   public <R> R accept(NodeVisitor<R> visitor) {
-    return visitor.visitFun(this);
+    return visitor.visit(this);
   }
 }

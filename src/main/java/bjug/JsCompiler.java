@@ -16,19 +16,19 @@ public class JsCompiler implements NodeVisitor<String> {
   }
 
   @Override
-  public String visitNum(Num n) {
+  public String visit(Num n) {
     return Integer.toString(n.value);
   }
 
   @Override
-  public String visitAdd(Add a) {
+  public String visit(Add a) {
     String left = a.left.accept(this);
     String right = a.right.accept(this);
     return String.format("%s + %s", left, right);
   }
 
   @Override
-  public String visitFun(Fun fun) {
+  public String visit(Fun fun) {
     String param = fun.param;
     String body = fun.body.accept(this);
     return String.format("function (%s) { return %s; }", param, body);

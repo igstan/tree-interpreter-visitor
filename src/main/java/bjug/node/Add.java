@@ -10,6 +10,6 @@ public class Add implements Node {
 
   @Override
   public <R> R accept(NodeVisitor<R> visitor) {
-    return visitor.visitAdd(this);
+    return visitor.visit(this);
   }
 }

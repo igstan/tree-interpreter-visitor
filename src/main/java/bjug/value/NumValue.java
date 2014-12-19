@@ -9,6 +9,6 @@ public class NumValue implements Value {
 
   @Override
   public <R> R accept(ValueVisitor<R> visitor) {
-    return visitor.visitNumValue(this);
+    return visitor.visit(this);
   }
 }
