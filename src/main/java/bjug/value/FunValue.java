@@ -13,6 +13,6 @@ public class FunValue implements Value {
 
   @Override
   public <R> R accept(ValueVisitor<R> visitor) {
-    return visitor.visitFunValue(this);
+    return visitor.visit(this);
   }
 }

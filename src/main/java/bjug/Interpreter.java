@@ -19,12 +19,12 @@ public class Interpreter implements NodeVisitor<Value> {
 
     String repr = result.accept(new ValueVisitor<String>() {
       @Override
-      public String visitNumValue(NumValue num) {
+      public String visit(NumValue num) {
         return Integer.toString(num.value);
       }
 
       @Override
-      public String visitFunValue(FunValue fun) {
+      public String visit(FunValue fun) {
         return "[function]";
       }
     });
@@ -44,22 +44,22 @@ public class Interpreter implements NodeVisitor<Value> {
 
     return left.accept(new ValueVisitor<Value>() {
       @Override
-      public Value visitNumValue(final NumValue a) {
+      public Value visit(final NumValue a) {
         return right.accept(new ValueVisitor<Value>() {
           @Override
-          public Value visitNumValue(NumValue b) {
+          public Value visit(NumValue b) {
             return new NumValue(a.value + b.value);
           }
 
           @Override
-          public Value visitFunValue(FunValue fun) {
+          public Value visit(FunValue fun) {
             throw new RuntimeException("Second operand was not a number: function found.");
           }
         });
       }
 
       @Override
-      public Value visitFunValue(FunValue fun) {
+      public Value visit(FunValue fun) {
         throw new RuntimeException("First operand was not a number: function found.");
       }
     });
