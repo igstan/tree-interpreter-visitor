@@ -9,6 +9,6 @@ public class Num implements Node {
 
   @Override
   public <R> R accept(NodeVisitor<R> visitor) {
-    return visitor.visitNum(this);
+    return visitor.visit(this);
   }
 }

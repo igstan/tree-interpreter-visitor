@@ -33,12 +33,12 @@ public class Interpreter implements NodeVisitor<Value> {
   }
 
   @Override
-  public Value visitNum(Num n) {
+  public Value visit(Num n) {
     return new NumValue(n.value);
   }
 
   @Override
-  public Value visitAdd(Add a) {
+  public Value visit(Add a) {
     final Value left = a.left.accept(this);
     final Value right = a.right.accept(this);
 
@@ -66,7 +66,7 @@ public class Interpreter implements NodeVisitor<Value> {
   }
 
   @Override
-  public Value visitFun(Fun fun) {
+  public Value visit(Fun fun) {
     return new FunValue(fun.param, fun.body);
   }
 }
